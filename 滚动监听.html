@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>滚动监听</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    aside {
+      position: fixed;
+      border: 1px solid blue;
+      top: 0;
+      left: 0;
+      width: 200px
+    }
+
+    aside li {
+      line-height: 50px;
+      border-bottom: 1px solid gainsboro;
+      text-align: center
+    }
+
+    section {
+      margin-left: 200px;
+      border: 1px solid green;
+    }
+
+    section p {
+      line-height: 26px;
+      padding: 20px 0;
+    }
+
+    section p:first-child {
+      color: red
+    }
+
+    section p:nth-child(2) {
+      color: blue
+    }
+
+    section p:nth-child(3) {
+      color: orange
+    }
+
+    section p:nth-child(4) {
+      color: seagreen
+    }
+
+    .red {
+      background: red
+    }
+  </style>
+</head>
+<body>
+<aside>
+  <ul>
+    <li>一</li>
+    <li>二</li>
+    <li>三</li>
+    <li>四</li>
+  </ul>
+</aside>
+<section>
+  <p id="p1">Lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aliquam aliquid consequuntur d
+    Lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aliquam aliquid consequuntur
+    Lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aliquam aliquid consequuntur
+    Lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aliquam aliquid consequuntur
+    Lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aliquam aliquid consequunturLorem Lorem
+    ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aliquam aliquid consequunturLorem Lorem ipsum dolor
+    sit amet, consectetur adipisicing elit. Accusamus aliquam aliquid consequunturLorem Lorem ipsum dolor sit amet,
+    consectetur adipisicing elit. Accusamus aliquam aliquid consequunturLorem Lorem ipsum dolor sit amet, consectetur
+    adipisicing elit. Accusamus aliquam aliquid consequunturLorem Lorem ipsum dolor sit amet, consectetur adipisicing
+    elit. Accusamus aliquam aliquid consequuntur
+    Lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aliquam aliquid consequuntur
+    Lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aliquam aliquid consequuntur
+    Lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aliquam aliquid consequuntur
+    Lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aliquam aliquid consequuntur
+    eleniti error, esse excepturi magni natus nisi non odio pariatur quam quia quisquam sit suscipit unde vel veniam?
+    ipsum dolor sit amet, consectetur adipisicing elit. Architecto aspernatur assumenda, at dolor esse eumLorem Lorem
+    ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aliquam aliquid consequuntur d
+    Lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aliquam aliquid consequuntur
+    Lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aliquam aliquid consequuntur
+    Lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aliquam aliquid consequuntur
+    Lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aliquam aliquid consequunturLorem Lorem
+    ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aliquam aliquid consequunturLorem Lorem ipsum dolor
+    sit amet, consectetur adipisicing elit. Accusamus aliquam aliquid consequunturLorem Lorem ipsum dolor sit amet,
+    consectetur adipisicing elit. Accusamus aliquam aliquid consequunturLorem Lorem ipsum dolor sit amet, consectetur
+    adipisicing elit. Accusamus aliquam aliquid consequunturLorem Lorem ipsum dolor sit amet, consectetur adipisicing
+    elit. Accusamus aliquam aliquid consequuntur
+    Lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aliquam aliquid consequuntur
+    Lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aliquam aliquid consequuntur
+    Lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aliquam aliquid consequuntur
+    Lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aliquam aliquid consequuntur
+    eleniti error, esse excepturi magni natus nisi non odio pariatur quam quia quisquam sit suscipit unde vel veniam?
+    ipsum dolor sit amet, consectetur adipisicing elit. Architecto aspernatur assumenda, at dolor esse eum
+    exercitationem iure molestias nesciunt temporibus. Amet asperiores exercitationem labore molestiae neLorem Lorem
+    ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aliquam aliquid consequuntur d
+    Lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aliquam aliquid consequuntur
+    Lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aliquam aliquid consequuntur
+    Lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aliquam aliquid consequuntur
+    Lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aliquam aliquid consequunturLorem Lorem
+    ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aliquam aliquid consequunturLorem Lorem ipsum dolor
+    sit amet, consectetur adipisicing elit. Accusamus aliquam aliquid consequunturLorem Lorem ipsum dolor sit amet,
+    consectetur adipisicing elit. Accusamus aliquam aliquid consequunturLorem Lorem ipsum dolor sit amet, consectetur
+    adipisicing elit. Accusamus aliquam aliquid consequunturLorem Lorem ipsum dolor sit amet, consectetur adipisicing
+    elit. Accusamus aliquam aliquid consequuntur
+    Lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aliquam aliquid consequuntur
+    Lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aliquam aliquid consequuntur
+    Lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aliquam aliquid consequuntur
+    Lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aliquam aliquid consequuntur
+    eleniti error, esse excepturi magni natus nisi non odio pariatur quam quia quisquam sit suscipit unde vel veniam?
+    ipsum dolor sit amet, consectetur adipisicing elit. Architecto aspernatur assumenda, at dolor esse eum
+    exercitationem iure molestias nesciunt temporibus. Amet asperiores exercitationem labore molestiae ne
+    exercitationem iure molestias nesciunt temporibus. Amet asperiores exercitationem labore molestiae neque praesentium
+    quisquam reprehenderit saepe?</p>
+  <p id="p2">2013年9月28日 - 2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享 经验内容仅供参考2013年9月28日 -
+    2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享 经验内容仅供参考2013年9月28日 - 2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享
+    经验内容仅供参考2013年9月28日 - 2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享 经验内容仅供参考2013年9月28日 -
+    2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享 经验内容仅供参考2013年9月28日 - 2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享
+    经验内容仅供参考2013年9月28日 - 2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享 经验内容仅供参考2013年9月28日 -
+    2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享 经验内容仅供参考2013年9月28日 - 2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享
+    经验内容仅供参考2013年9月28日 - 2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享 经验内容仅供参考2013年9月28日 -
+    2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享 经验内容仅供参考2013年9月28日 - 2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享
+    经验内容仅供参考2013年9月28日 - 2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享 经验内容仅供参考2013年9月28日 -
+    2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享 经验内容仅供参考2013年9月28日 - 2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享
+    经验内容仅供参考2013年9月28日 - 2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享 经验内容仅供参考2013年9月28日 -
+    2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享 经验内容仅供参考2013年9月28日 - 2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享
+    经验内容仅供参考2013年9月28日 - 2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享 经验内容仅供参考2013年9月28日 -
+    2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享 经验内容仅供参考2013年9月28日 - 2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享
+    经验内容仅供参考2013年9月28日 - 2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享 经验内容仅供参考2013年9月28日 -
+    2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享 经验内容仅供参考2013年9月28日 - 2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享
+    经验内容仅供参考2013年9月28日 - 2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享 经验内容仅供参考2013年9月28日 -
+    2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享 经验内容仅供参考2013年9月28日 - 2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享
+    经验内容仅供参考2013年9月28日 - 2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享 经验内容仅供参考2013年9月28日 -
+    2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享 经验内容仅供参考,如果 2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享
+    经验内容仅供参考2013年9月28日 - 2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享
+    经验内容仅供参考2013年9月28日 - 2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享 经验内容仅供参考2013年9月28日 -
+    2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享 经验内容仅供参考2013年9月28日 - 2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享
+    经验内容仅供参考2013年9月28日 - 2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享 经验内容仅供参考2013年9月28日 -
+    2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享 经验内容仅供参考2013年9月28日 - 2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享
+    经验内容仅供参考2013年9月28日 - 2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享 经验内容仅供参考2013年9月28日 -
+    2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享 经验内容仅供参考2013年9月28日 - 2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享
+    经验内容仅供参考2013年9月28日 - 2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享 经验内容仅供参考2013年9月28日 -
+    2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享 经验内容仅供参考2013年9月28日 - 2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享
+    经验内容仅供参考2013年9月28日 - 2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享 经验内容仅供参考2013年9月28日 -
+    2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享 经验内容仅供参考2013年9月28日 - 2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享
+    经验内容仅供参考2013年9月28日 - 2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享 经验内容仅供参考2013年9月28日 -
+    2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享 经验内容仅供参考2013年9月28日 - 2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享
+    经验内容仅供参考2013年9月28日 - 2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享 经验内容仅供参考2013年9月28日 -
+    2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享 经验内容仅供参考2013年9月28日 - 2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享
+    经验内容仅供参考2013年9月28日 - 2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享 经验内容仅供参考2013年9月28日 -
+    2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享 经验内容仅供参考2013年9月28日 - 2.请根据自
+    2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享 经验内容仅供参考2013年9月28日 - 2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享
+    经验内容仅供参考2013年9月28日 - 2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享 经验内容仅供参考2013年9月28日 -
+    2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享 经验内容仅供参考2013年9月28日 - 2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享
+    经验内容仅供参考2013年9月28日 - 2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享 经验内容仅供参考2013年9月28日 -
+    2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享 经验内容仅供参考2013年9月28日 - 2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享
+    经验内容仅供参考2013年9月28日 - 2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享 经验内容仅供参考2013年9月28日 -
+    2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享 经验内容仅供参考2013年9月28日 - 2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享
+    经验内容仅供参考2013年9月28日 - 2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享 经验内容仅供参考2013年9月28日 -
+    2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享 经验内容仅供参考2013年9月28日 - 2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享
+    经验内容仅供参考2013年9月28日 - 2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享 经验内容仅供参考2013年9月28日 -
+    2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享 经验内容仅供参考2013年9月28日 - 2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享
+    经验内容仅供参考2013年9月28日 - 2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享 经验内容仅供参考2013年9月28日 -
+    2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享 经验内容仅供参考2013年9月28日 - 2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享
+    经验内容仅供参考2013年9月28日 - 2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享 经验内容仅供参考2013年9月28日 -
+    2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享 经验内容仅供参考2013年9月28日 - 2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享
+    经验内容仅供参考2013年9月28日 - 2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享 经验内容仅供参考2013年9月28日 -
+    2.请根据自己的需要修改,效果请看本站侧栏部分广告跟随滚动条上下浮动效果!原作者:好妙招分享 经验内容仅供参考2013年9月28日 - 2.请根据自您需解决具体问题(尤其法律、医学...Lorem ipsum dolor sit
+    amet, consectetur
+    adipisicing elit. Accusamus amet asperiores aut consequuntur cupiditate debitis deleniti dolore doloremque eaque
+    fugiat, natus neque nobis perspiciatis quas sequi similique ut vero voluptas!lorem Lorem ipsum dolor sit amet,
+    consectetur adipisicing elit. Ab adipisci, aperiam assumenda consequuntur dicta distinctio dolores ducimus, ex ipsam
+    ipsum mollitia nihil odit omnis quae, quisquam quos recusandae similique sit!</p>
+  <p id="p3">2012年4月6日 - 现在许多web2.0风格的网站都喜欢用“侧栏跟随”的效果,就是当一个页面很长的时候,设定侧栏内容会跟随滚动条,这种效果适用于评论较多、内容较长的网站...lorem Lorem ipsum
+    dolor
+    sit amet, consectetur adipisicing elit. Ad animi consectetur enim labore laboriosam magni maiores maxime mollitia,
+    numquam odio odit omnis, placeat quasi quod quos rem sequi unde? Am2012年4月6日 -
+    现在许多web2.0风格的网站都喜欢用“侧栏跟随”的效果,就是当一个页面很长的时候,设定侧栏内容会跟随滚动条,这种效果适用于评论较多、内容较长的网站...lorem Lorem ipsum dolor
+    sit amet, consectetur adipisicing elit. Ad animi consectetur enim labore laboriosam magni maiores maxime mollitia,
+    numquam odio odit omnis, placeat quasi quod quos rem sequi unde? Amet. Lorem ipsum dolor sit amet, consectetur
+    adipisicing elit. A ab adipisci autem consequuntur enim eum iusto laborum 2012年4月6日 -
+    现在许多web2.0风格的网站都喜欢用“侧栏跟随”的效果,就是当一个页面很长的时候,设定侧栏内容会跟随滚动条,这种效果适用于评论较多、内容较长的网站...lorem Lorem ipsum dolor
+    sit amet, consectetur adipisicing elit. Ad animi consectetur enim labore laboriosam magni maiores maxime mollitia,
+    numquam odio odit omnis, placeat quasi quod quos rem sequi unde? Amet. Lorem ipsum dolor sit amet, consectetur
+    adipisicing elit. A ab adipisci autem consequuntur enim eum iusto laborum 2012年4月6日 -
+    现在许多web2.0风格的网站都喜欢用“侧栏跟随”的效果,就是当一个页面很长的时候,设定侧栏内容会跟随滚动条,这种效果适用于评论较多、内容较长的网站...lorem Lorem ipsum dolor
+    sit amet, consectetur adipisicing elit. Ad animi consectetur enim labore laboriosam magni maiores maxime mollitia,
+    numquam odio odit omnis, placeat quasi quod quos rem sequi unde? Amet. Lorem ipsum dolor sit amet, consectetur
+    adipisicing elit. A ab adipisci autem consequuntur enim eum iusto laborum 2012年4月6日 -
+    现在许多web2.0风格的网站都喜欢用“侧栏跟随”的效果,就是当一个页面很长的时候,设定侧栏内容会跟随滚动条,这种效果适用于评论较多、内容较长的网站...lorem Lorem ipsum dolor
+    sit amet, consectetur adipisicing elit. Ad animi consectetur enim labore laboriosam magni maiores maxime mollitia,
+    numquam odio odit omnis, placeat quasi quod quos rem sequi unde? Amet. Lorem ipsum dolor sit amet, consectetur
+    adipisicing elit. A ab adipisci autem consequuntur enim eum iusto laborum 2012年4月6日 -
+    现在许多web2.0风格的网站都喜欢用“侧栏跟随”的效果,就是当一个页面很长的时候,设定侧栏内容会跟随012年4月6日 -
+    现在许多web2.0风格的网站都喜欢用“侧栏跟随”的效果,就是当一个页面很长的时候,设定侧栏内容会跟随滚动条,这种效果适用于评论较多、内容较长的网站...lorem Lorem ipsum dolor
+    sit amet, consectetur adipisicing elit. Ad animi consectetur enim labore laboriosam magni maiores maxime mollitia,
+    numquam odio odit omnis, placeat quasi quod quos rem sequi unde? Am2012年4月6日 -
+    现在许多web2.0风格的网站都喜欢用“侧栏跟随”的效果,就是当一个页面很长的时候,设定侧栏内容会跟随滚动条,这种效果适用于评论较多、内容较长的网站...lorem Lorem ipsum dolor
+    sit amet, consectetur adipisicing elit. Ad animi consectetur enim labore laboriosam magni maiores maxime mollitia,
+    numquam odio odit omnis, placeat quasi quod quos rem sequi unde? Amet. Lorem ipsum dolor sit amet, consectetur
+    adipisicing elit. A ab adipisci autem consequuntur enim eum iusto laborum 2012年4月6日 -
+    现在许多web2.0风格的网站都喜欢用“侧栏跟随”的效果,就是当一个页面很长的时候,设定侧栏内容会跟随滚动条,这种效果适用于评论较多、内容较长的网站...lorem Lorem ipsum dolor
+    sit amet, consectetur adipisicing elit. Ad animi consectetur enim labore laboriosam magni maiores maxime mollitia,
+    numquam odio odit omnis, placeat quasi quod quos rem sequi unde? Amet. Lorem ipsum dolor sit amet, consectetur
+    adipisicing elit. A ab adipisci autem consequuntur enim eum iusto laborum 2012年4月6日 -
+    现在许多web2.0风格的网站都喜欢用“侧栏跟随”的效果,就是当一个页面很长的时候,设定侧栏内容会跟随滚动条,这种效果适用于评论较多、内容较长的网站...lorem Lorem ipsum dolor
+    sit amet, consectetur adipisicing elit. Ad animi consectetur enim labore laboriosam magni maiores maxime mollitia,
+    numquam odio odit omnis, placeat quasi quod quos rem sequi unde? Amet. Lorem ipsum dolor sit amet, consectetur
+    adipisicing elit. A ab adipisci autem consequuntur enim eum iusto laborum 2012年4月6日 -
+    现在许多web2.0风格的网站都喜欢用“侧栏跟随”的效果,就是当一个页面很长的时候,设定侧栏内容会跟随滚动条,这种效果适用于评论较多、内容较长的网站...lorem Lorem ipsum dolor
+    sit amet, consectetur adipisicing elit. Ad animi consectetur enim labore laboriosam magni maiores maxime mollitia,
+    numquam odio odit omnis, placeat quasi quod quos rem sequi unde? Amet. Lorem ipsum dolor sit amet, consectetur
+    adipisicing elit. A ab adipisci autem consequuntur enim eum iusto laborum 2012年4月6日 -
+    现在许多web2.0风格的网站都喜欢用“侧栏跟随”的效果,就是当一个页面很长的时候,设定侧栏内容会跟随012年4月6日 -
+    现在许多web2.0风格的网站都喜欢用“侧栏跟随”的效果,就是当一个页面很长的时候,设定侧栏内容会跟随滚动条,这种效果适用于评论较多、内容较长的网站...lorem Lorem ipsum dolor
+    sit amet, consectetur adipisicing elit. Ad animi consectetur enim labore laboriosam magni maiores maxime mollitia,
+    numquam odio odit omnis, placeat quasi quod quos rem sequi unde? Am2012年4月6日 -
+    现在许多web2.0风格的网站都喜欢用“侧栏跟随”的效果,就是当一个页面很长的时候,设定侧栏内容会跟随滚动条,这种效果适用于评论较多、内容较长的网站...lorem Lorem ipsum dolor
+    sit amet, consectetur adipisicing elit. Ad animi consectetur enim labore laboriosam magni maiores maxime mollitia,
+    numquam odio odit omnis, placeat quasi quod quos rem sequi unde? Amet. Lorem ipsum dolor sit amet, consectetur
+    adipisicing elit. A ab adipisci autem consequuntur enim eum iusto laborum 2012年4月6日 -
+    现在许多web2.0风格的网站都喜欢用“侧栏跟随”的效果,就是当一个页面很长的时候,设定侧栏内容会跟随滚动条,这种效果适用于评论较多、内容较长的网站...lorem Lorem ipsum dolor
+    sit amet, consectetur adipisicing elit. Ad animi consectetur enim labore laboriosam magni maiores maxime mollitia,
+    numquam odio odit omnis, placeat quasi quod quos rem sequi unde? Amet. Lorem ipsum dolor sit amet, consectetur
+    adipisicing elit. A ab adipisci autem consequuntur enim eum iusto laborum 2012年4月6日 -
+    现在许多web2.0风格的网站都喜欢用“侧栏跟随”的效果,就是当一个页面很长的时候,设定侧栏内容会跟随滚动条,这种效果适用于评论较多、内容较长的网站...lorem Lorem ipsum dolor
+    sit amet, consectetur adipisicing elit. Ad animi consectetur enim labore laboriosam magni maiores maxime mollitia,
+    numquam odio odit omnis, placeat quasi quod quos rem sequi unde? Amet. Lorem ipsum dolor sit amet, consectetur
+    adipisicing elit. A ab adipisci autem consequuntur enim eum iusto laborum 2012年4月6日 -
+    现在许多web2.0风格的网站都喜欢用“侧栏跟随”的效果,就是当一个页面很长的时候,设定侧栏内容会跟随滚动条,这种效果适用于评论较多、内容较长的网站...lorem Lorem ipsum dolor
+    sit amet, consectetur adipisicing elit. Ad animi consectetur enim labore laboriosam magni maiores maxime mollitia,
+    numquam odio odit omnis, placeat quasi quod quos rem sequi unde? Amet. Lorem ipsum dolor sit amet, consectetur
+    adipisicing elit. A ab adipisci autem consequuntur enim eum iusto laborum 2012年4月6日 -
+    现在许多web2.0风格的网站都喜欢用“侧栏跟随”的效果,就是当一个页面很长的时候,设定侧栏内容会跟随012年4月6日 -
+    现在许多web2.0风格的网站都喜欢用“侧栏跟随”的效果,就是当一个页面很长的时候,设定侧栏内容会跟随滚动条,这种效果适用于评论较多、内容较长的网站...lorem Lorem ipsum dolor
+    sit amet, consectetur adipisicing elit. Ad animi consectetur enim labore laboriosam magni maiores maxime mollitia,
+    numquam odio odit omnis, placeat quasi quod quos rem sequi unde? Am2012年4月6日 -
+    现在许多web2.0风格的网站都喜欢用“侧栏跟随”的效果,就是当一个页面很长的时候,设定侧栏内容会跟随滚动条,这种效果适用于评论较多、内容较长的网站...lorem Lorem ipsum dolor
+    sit amet, consectetur adipisicing elit. Ad animi consectetur enim labore laboriosam magni maiores maxime mollitia,
+    numquam odio odit omnis, placeat quasi quod quos rem sequi unde? Amet. Lorem ipsum dolor sit amet, consectetur
+    adipisicing elit. A ab adipisci autem consequuntur enim eum iusto laborum 2012年4月6日 -
+    现在许多web2.0风格的网站都喜欢用“侧栏跟随”的效果,就是当一个页面很长的时候,设定侧栏内容会跟随滚动条,这种效果适用于评论较多、内容较长的网站...lorem Lorem ipsum dolor
+    sit amet, consectetur adipisicing elit. Ad animi consectetur enim labore laboriosam magni maiores maxime mollitia,
+    numquam odio odit omnis, placeat quasi quod quos rem sequi unde? Amet. Lorem ipsum dolor sit amet, consectetur
+    adipisicing elit. A ab adipisci autem consequuntur enim eum iusto laborum 2012年4月6日 -
+    现在许多web2.0风格的网站都喜欢用“侧栏跟随”的效果,就是当一个页面很长的时候,设定侧栏内容会跟随滚动条,这种效果适用于评论较多、内容较长的网站...lorem Lorem ipsum dolor
+    sit amet, consectetur adipisicing elit. Ad animi consectetur enim labore laboriosam magni maiores maxime mollitia,
+    numquam odio odit omnis, placeat quasi quod quos rem sequi unde? Amet. Lorem ipsum dolor sit amet, consectetur
+    adipisicing elit. A ab adipisci autem consequuntur enim eum iusto laborum 2012年4月6日 -
+    现在许多web2.0风格的网站都喜欢用“侧栏跟随”的效果,就是当一个页面很长的时候,设定侧栏内容会跟随滚动条,这种效果适用于评论较多、内容较长的网站...lorem Lorem ipsum dolor
+    sit amet, consectetur adipisicing elit. Ad animi consectetur enim labore laboriosam magni maiores maxime mollitia,
+    numquam odio odit omnis, placeat quasi quod quos rem sequi unde? Amet. Lorem ipsum dolor sit amet, consectetur
+    adipisicing elit. A ab adipisci autem consequuntur enim eum iusto laborum 2012年4月6日 -
+    现在许多web2.0风格的网站都喜欢用“侧栏跟随”的效果,就是当一个页面很长的时候,设定侧栏内容会跟随滚动条,这种效果适用于评论较多、内容较长的网站...lorem Lorem ipsum dolor
+    sit amet, consectetur adipisicing elit. Ad animi consectetur enim labore laboriosam magni maiores maxime mollitia,
+    numquam odio odit omnis, placeat quasi quod quos rem sequi unde? Amet. Lorem ipsum dolor sit amet, consectetur
+    adipisicing elit. A ab adipisci autem consequuntur enim eum iusto laborum 2012年4月6日 -
+    现在许多web2.0风格的网站都喜欢用“侧栏跟随”的效果,就是当一个页面很长的时候,设定侧栏内容会跟随滚动条,这种效果适用于评论较多、内容较长的网站...lorem Lorem ipsum dolor
+    sit amet, consectetur adipisicing elit. Ad animi consectetur enim labore laboriosam magni maiores maxime mollitia,
+    numquam odio odit omnis, placeat quasi quod quos rem sequi unde? Amet. Lorem ipsum dolor sit amet, consectetur
+    adipisicing elit. A ab adipisci autem consequuntur enim eum iusto laborum 2012年4月6日 -
+    现在许多web2.0风格的网站都喜欢用“侧栏跟随”的效果,就是当一个页面很长的时候,设定侧栏内容会跟随滚动条,这种效果适用于评论较多、内容较长的网站...lorem Lorem ipsum dolor
+    sit amet, consectetur adipisicing elit. Ad animi consectetur enim labore laboriosam magni maiores maxime mollitia,
+    numquam odio odit omnis, placeat quasi quod quos rem sequi unde? Amet. Lorem ipsum dolor sit amet, consectetur
+    adipisicing elit. A ab adipisci autem consequuntur enim eum iusto laborum 2012年4月6日 -
+    现在许多web2.0风格的网站都喜欢用“侧栏跟随”的效果,就是当一个页面很长的时候,设定侧栏内容会跟随滚动条,这种效果适用于评论较多、内容较长的网站...lorem Lorem ipsum dolor
+    sit amet, consectetur adipisicing elit. Ad animi consectetur enim labore laboriosam magni maiores maxime mollitia,
+    numquam odio odit omnis, placeat quasi quod quos rem sequi unde? Amet. Lorem ipsum dolor sit amet, consectetur
+    adipisicing elit. A ab adipisci autem consequuntur enim eum iusto laborum 2012年4月6日 -
+    现在许多web2.0风格的网站都喜欢用“侧栏跟随”的效果,就是当一个页面很长的时候,设定侧栏内容会跟随滚动条,这种效果适用于评论较多、内容较长的网站...lorem Lorem ipsum dolor
+    sit amet, consectetur adipisicing elit. Ad animi consectetur enim labore laboriosam magni maiores maxime mollitia,
+    numquam odio odit omnis, placeat quasi quod quos rem sequi unde? Amet. Lorem ipsum dolor sit amet, consectetur
+    adipisicing elit. A ab adipisci autem consequuntur enim eum iusto laborum et. Lorem ipsum dolor sit amet,
+    consectetur
+    adipisicing elit. A ab adipisci autem consequuntur enim eum iusto laborum maiores minus natus nemo, omnis quae quasi
+    quidem repellendus sint tenetur voluptatem? Laboriosam?</p>
+  <p id="p4">WP酷在之前分享过简单实现侧边栏
+    跟随页面滚动效果,可该代码有一个重大缺陷——滑动的元素只能在最后面P酷在之前分享过简单实现侧边栏跟随WP酷在之前分享过简单实现侧边栏
+    跟随页面滚动效果,可该代码有一个重大缺陷——滑动的元素只能在最后面P酷在之前分享过简单实现侧边栏跟随页面WP酷在之前分享过简单实现侧边栏
+    跟随页面滚动效果,可该代码有一个重大缺陷——滑动的元素只能在最后面P酷在之前分享过简单实现侧边栏跟随页面WP酷在之前分享过简单实现侧边栏
+    跟随页面滚动效果,可该代码有一个重大缺陷——滑动的元素只能在最后面P酷在之前分享过简单实现侧边栏跟随页面WP酷在之前分享过简单实现侧边栏
+    跟随页面滚动效果,可该代码有一个重大缺陷——滑动的元素只能在最后面P酷在之前分享过简单实现侧边栏跟随页面WP酷在之前分享过简单实现侧边栏
+    跟随页面滚动效果,可该代码有一个重大缺陷——滑动的元素只能在最后面P酷在之前分享过简单实现侧边栏跟随页面WP酷在之前分享过简单实现侧边栏
+    跟随页面滚动效果,可该代码有一个重大缺陷——滑动的元素只能在最后面P酷在之前分享过简单实现侧边栏跟随页面WP酷在之前分享过简单实现侧边栏
+    跟随页面滚动效果,可该代码有一个重大缺陷——滑动的元素只能在最后面P酷在之前分享过简单实现侧边栏跟随页面WP酷在之前分享过简单实现侧边栏
+    跟随页面滚动效果,可该代码有一个重大缺陷——滑动的元素只能在最后面P酷在之前分享过简单实现侧边栏跟随页面WP酷在之前分享过简单实现侧边栏
+    跟随页面滚动效果,可该代码有一个重大缺陷——滑动的元素只能在最后面P酷在之前分享过简单实现侧边栏跟随页面WP酷在之前分享过简单实现侧边栏
+    跟随页面滚动效果,可该代码有一个重大缺陷——滑动的元素只能在最后面P酷在之前分享过简单实现侧边栏跟随页面WP酷在之前分享过简单实现侧边栏
+    跟随页面滚动效果,可该代码有一个重大缺陷——滑动的元素只能在最后面P酷在之前分享过简单实现侧边栏跟随页面WP酷在之前分享过简单实现侧边栏
+    跟随页面滚动效果,可该代码有一个重大缺陷——滑动的元素只能在最后面P酷在之前分享过简单实现侧边栏跟随页面WP酷在之前分享过简单实现侧边栏
+    跟随页面滚动效果,可该代码有一个重大缺陷——滑动的元素只能在最后面P酷在之前分享过简单实现侧边栏跟随页面WP酷在之前分享过简单实现侧边栏
+    跟随页面滚动效果,可该代码有一个重大缺陷——滑动的元素只能在最后面P酷在之前分享过简单实现侧边栏跟随页面WP酷在之前分享过简单实现侧边栏
+    跟随页面滚动效果,可该代码有一个重大缺陷——滑动的元素只能在最后面P酷在之前分享过简单实现侧边栏跟随页面WP酷在之前分享过简单实现侧边栏
+    跟随页面滚动效果,可该代码有一个重大缺陷——滑动的元素只能在最后面P酷在之前分享过简单实现侧边栏跟随页面WP酷在之前分享过简单实现侧边栏
+    跟随页面滚动效果,可该代码有一个重大缺陷——滑动的元素只能在最后面P酷在之前分享过简单实现侧边栏跟随页面WP酷在之前分享过简单实现侧边栏
+    跟随页面滚动效果,可该代码有一个重大缺陷——滑动的元素只能在最后面P酷在之前分享过简单实现侧边栏跟随页面WP酷在之前分享过简单实现侧边栏
+    跟随页面滚动效果,可该代码有一个重大缺陷——滑动的元素只能在最后面P酷在之前分享过简单实现侧边栏跟随页面WP酷在之前分享过简单实现侧边栏
+    跟随页面滚动效果,可该代码有一个重大缺陷——滑动的元素只能在最后面P酷在之前分享过简单实现侧边栏跟随页面WP酷在之前分享过简单实现侧边栏
+    跟随页面滚动效果,可该代码有一个重大缺陷——滑动的元素只能在最后面P酷在之前分享过简单实现侧边栏跟随页面WP酷在之前分享过简单实现侧边栏
+    跟随页面滚动效果,可该代码有一个重大缺陷——滑动的元素只能在最后面P酷在之前分享过简单实现侧边栏跟随页面WP酷在之前分享过简单实现侧边栏
+    跟随页面滚动效果,可该代码有一个重大缺陷——滑动的元素只能在最后面P酷在之前分享过简单实现侧边栏跟随页面WP酷在之前分享过简单实现侧边栏
+    跟随页面滚动效果,可该代码有一个重大缺陷——滑动的元素只能在最后面P酷在之前分享过简单实现侧边栏跟随页面WP酷在之前分享过简单实现侧边栏
+    跟随页面滚动效果,可该代码有一个重大缺陷——滑动的元素只能在最后面P酷在之前分享过简单实现侧边栏跟随页面WP酷在之前分享过简单实现侧边栏
+    跟随页面滚动效果,可该代码有一个重大缺陷——滑动的元素只能在最后面P酷在之前分享过简单实现侧边栏跟随页面WP酷在之前分享过简单实现侧边栏
+    跟随页面滚动效果,可该代码有一个重大缺陷——滑动的元素只能在最后面P酷在之前分享过简单实现侧边栏跟随页面WP酷在之前分享过简单实现侧边栏
+    跟随页面滚动效果,可该代码有一个重大缺陷——滑动的元素只能在最后面P酷在之前分享过简单实现侧边栏跟随页面WP酷在之前分享过简单实现侧边栏
+    跟随页面滚动效果,可该代码有一个重大缺陷——滑动的元素只能在最后面P酷在之前分享过简单实现侧边栏跟随页面WP酷在之前分享过简单实现侧边栏
+    跟随页面滚动效果,可该代码有一个重大缺陷——滑动的元素只能在最后面P酷在之前分享过简单实现侧边栏跟随页面页面滚动效果,可该代码有一个重大缺陷——滑动的元素只能在最后面,否P酷在之前分享过简单实现侧边栏跟随页面滚动效果,可该代码有一个重大缺陷——滑动的元素只能在最后面,否P酷在之前分享过简单实现侧边栏跟随页面滚动效果,可该代码有一个重大缺陷——滑动的元素只能在最后面,否P酷在之前分享过简单实现侧边栏跟随页面滚动效果,可该代码有一个重大缺陷——滑动的元素只能在最后面,否P酷在之前分享过简单实现侧边栏跟随页面滚动效果,可该代码有一个重大缺陷——滑动的元素只能在最后面,否P酷在之前分享过简单实现侧边栏跟随页面滚动效果,可该代码有一个重大缺陷——滑动的元素只能在最后面,否P酷在之前分享过简单实现侧边栏跟随页面滚动效果,可该代码有一个重大缺陷——滑动的元素只能在最后面,否P酷在之前分享过简单实现侧边栏跟随页面滚动效果,可该代码有一个重大缺陷——滑动的元素只能在最后面,否P酷在之前分享过简单实现侧边栏跟随页面滚动效果,可该代码有一个重大缺陷——滑动的元素只能在最后面,否P酷在之前分享过简单实现侧边栏跟随页面滚动效果,可该代码有一个重大缺陷——滑动的元素只能在最后面,否P酷在之前分享过简单实现侧边栏跟随页面滚动效果,可该代码有一个重大缺陷——滑动的元素只能在最后面,否P酷在之前分享过简单实现侧边栏跟随页面滚动效果,可该代码有一个重大缺陷——滑动的元素只能在最后面,否P酷在之前分享过简单实现侧边栏跟随页面滚动效果,可该代码有一个重大缺陷——滑动的元素只能在最后面,否P酷在之前分享过简单实现侧边栏跟随页面滚动效果,可该代码有一个重大缺陷——滑动的元素只能在最后面,否P酷在之前分享过简单实现侧边栏跟随页面滚动效果,可该代码有一个重大缺陷——滑动的元素只能在最后面,否P酷在之前分享过简单实现侧边栏跟随页面滚动效果,可该代码有一个重大缺陷——滑动的元素只能在最后面,否P酷在之前分享过简单实现侧边栏跟随页面滚动效果,可该代码有一个重大缺陷——滑动的元素只能在最后面,否P酷在之前分享过简单实现侧边栏跟随页面滚动效果,可该代码有一个重大缺陷——滑动的元素只能在最后面,否P酷在之前分享过简单实现侧边栏跟随页面滚动效果,可该代码有一个重大缺陷——滑动的元素只能在最后面,否P酷在之前分享过简单实现侧边栏跟随页面滚动效果,可该代码有一个重大缺陷——滑动的元素只能在最后面,否P酷在之前分享过简单实现侧边栏跟随页面滚动效果,可该代码有一个重大缺陷——滑动的元素只能在最后面,否P酷在之前分享过简单实现侧边栏跟随页面滚动效果,可该代码有一个重大缺陷——滑动的元素只能在最后面,否P酷在之前分享过简单实现侧边栏跟随页面滚动效果,可该代码有一个重大缺陷——滑动的元素只能在最后面,否P酷在之前分享过简单实现侧边栏跟随页面滚动效果,可该代码有一个重大缺陷——滑动的元素只能在最后面,否P酷在之前分享过简单实现侧边栏跟随页面滚动效果,可该代码有一个重大缺陷——滑动的元素只能在最后面,否P酷在之前分享过简单实现侧边栏跟随页面滚动效果,可该代码有一个重大缺陷——滑动的元素只能在最后面,否P酷在之前分享过简单实现侧边栏跟随页面滚动效果,可该代码有一个重大缺陷——滑动的元素只能在最后面,否P酷在之前分享过简单实现侧边栏跟随页面滚动效果,可该代码有一个重大缺陷——滑动的元素只能在最后面,否P酷在之前分享过简单实现侧边栏跟随页面滚动效果,可该代码有一个重大缺陷——滑动的元素只能在最后面,否P酷在之前分享过简单实现侧边栏跟随页面滚动效果,可该代码有一个重大缺陷——滑动的元素只能在最后面,否P酷在之前分享过简单实现侧边栏跟随页面滚动效果,可该代码有一个重大缺陷——滑动的元素只能在最后面,否P酷在之前分享过简单实现侧边栏跟随页面滚动效果,可该代码有一个重大缺陷——滑动的元素只能在最后面,否P酷在之前分享过简单实现侧边栏跟随页面滚动效果,可该代码有一个重大缺陷——滑动的元素只能在最后面,否P酷在之前分享过简单实现侧边栏跟随页面滚动效果,可该代码有一个重大缺陷——滑动的元素只能在最后面,否P酷在之前分享过简单实现侧边栏跟随页面滚动效果,可该代码有一个重大缺陷——滑动的元素只能在最后面,否,否则会把其它内容盖住。有什么其它的好方法吗?草野时代博主...</p>
+</section>
+<script src="jquery-1.8.0.js"></script>
+<script>
+  $(function () {
+    var listenScroll = {
+      init: function () {
+        var _this = this;
+        _this.getScrollP()
+        $(window).scroll(function () {
+          _this.getScrollP()
+        })
+      },
+      getScrollP: function () {
+        var windowTop = $(window).scrollTop();
+        if (windowTop >= $("#p4").offset().top) {
+          $("aside li").eq(3).addClass("red").siblings().removeClass("red");
+        } else if (windowTop >= $("#p3").offset().top) {
+          $("aside li").eq(2).addClass("red").siblings().removeClass("red");
+        } else if (windowTop >= $("#p2").offset().top ) {
+          $("aside li").eq(1).addClass("red").siblings().removeClass("red");
+        } else {
+          $("aside li").eq(0).addClass("red").siblings().removeClass("red");
+        }
+      }
+    }
+    listenScroll.init();
+  })
+</script>
+</body>
+</html>
